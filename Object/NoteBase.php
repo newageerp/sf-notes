@@ -2,9 +2,10 @@
 namespace Newageerp\SfNotes\Object;
 
 use Doctrine\ORM\Mapping as ORM;
+use Newageerp\SfBaseEntity\Object\BaseEntity;
 use OpenApi\Annotations as OA;
 
-class NoteBase
+class NoteBase extends BaseEntity
 {
     /**
      * @OA\Property(format="text", type="string")
