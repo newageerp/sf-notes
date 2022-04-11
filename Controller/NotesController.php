@@ -3,6 +3,7 @@
 namespace Newageerp\SfNotes\Controller;
 
 use Newageerp\SfBaseEntity\Controller\OaBaseController;
+use Newageerp\SfNotes\Messenger\NotesReadAllMessage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
