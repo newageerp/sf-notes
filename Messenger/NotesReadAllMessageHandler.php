@@ -8,9 +8,7 @@ use Newageerp\SfSocket\Event\SocketSendPoolEvent;
 use Newageerp\SfUservice\Service\UService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-#[AsMessageHandler]
 class NotesReadAllMessageHandler
 {
     protected EntityManagerInterface $em;
