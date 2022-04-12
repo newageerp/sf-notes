@@ -6,3 +6,5 @@ services:
 
   Newageerp\SfNotes\Controller\NotesController:
     arguments: [ ]
+  Newageerp\SfNotes\Messenger\NotesReadAllMessageHandler:
+    tags: [ messenger.message_handler ]
