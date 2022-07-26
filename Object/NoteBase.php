@@ -1,4 +1,5 @@
 <?php
+
 namespace Newageerp\SfNotes\Object;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,6 +8,12 @@ use OpenApi\Annotations as OA;
 
 class NoteBase extends BaseEntity
 {
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected int $replyTo = 0;
+
     /**
      * @OA\Property(format="text", type="string")
      * @ORM\Column(type="text")
@@ -117,5 +124,19 @@ class NoteBase extends BaseEntity
         $this->notifyAccept = $notifyAccept;
     }
 
+    /**
+     * @return int
+     */
+    public function getReplyTo(): int
+    {
+        return $this->replyTo;
+    }
 
+    /**
+     * @param int $replyTo
+     */
+    public function setReplyTo(int $replyTo): void
+    {
+        $this->replyTo = $replyTo;
+    }
 }
