@@ -4,7 +4,7 @@ namespace Newageerp\SfNotes\Messenger;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Newageerp\SfAuth\Service\AuthService;
-use Newageerp\SfSocket\Event\SocketSendPoolEvent;
+use Newageerp\SfSocket\Service\SocketService;
 use Newageerp\SfUservice\Service\UService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -19,16 +19,20 @@ class NotesReadAllMessageHandler
 
     protected UService $uservice;
 
+    protected SocketService $socketService;
+
     public function __construct(
         EntityManagerInterface $em,
         LoggerInterface $ajLogger,
         EventDispatcherInterface $eventDispatcher,
         UService $uservice,
+        SocketService $socketService,
     ) {
         $this->em = $em;
         $this->ajLogger = $ajLogger;
         $this->eventDispatcher = $eventDispatcher;
         $this->uservice = $uservice;
+        $this->socketService = $socketService;
     }
 
     public function __invoke(NotesReadAllMessage $message)
@@ -87,7 +91,6 @@ class NotesReadAllMessageHandler
         $this->em->persist($note);
         $this->em->flush();
 
-        $event = new SocketSendPoolEvent();
-        $this->eventDispatcher->dispatch($event, SocketSendPoolEvent::NAME);
+        $this->socketService->sendPool();
     }
 }
