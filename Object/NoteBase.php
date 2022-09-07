@@ -139,4 +139,9 @@ class NoteBase extends BaseEntity
     {
         $this->replyTo = $replyTo;
     }
+
+    public function __construct()
+    {
+        $this->createdAt = \DateTime();
+    }
 }
